@@ -1,7 +1,7 @@
 {
 	"presets": [
 		"react",
-		["env", {
+		["env", { // The babel preset env
 			"targets": {
 				"browsers": "last 2 versions"
 			},
@@ -11,5 +11,12 @@
 	],
   "plugins": [
     "babel-plugin-transform-class-properties"
-  ]
+  ],
+  "env": { // doing different transformations based on environmental variables.
+    "test": { // when node env = test then run this plugin
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    }
+  }
 }
