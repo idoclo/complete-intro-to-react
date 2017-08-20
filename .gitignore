@@ -11,3 +11,5 @@ _site/
 .sass-cache/
 *.iml
 .idea/
+# prettier --single-quote --print-width=120 --write ClientApp.jsx
+# To get console in Sublime: control + ~

@@ -1,18 +1,21 @@
-const ce = React.createElement;
+import React from 'react';
+import { render } from 'react-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom'; // Switch makes it render only one component at a time, never more.
+import Landing from './Landing';
+import Search from './Search';
 
-const MyTitle = function(props) {
-  return ce('div', null, ce('h1', { style: { color: props.color } }, props.title));
-};
+const FourOFour = () => <h1>404</h1>;
 
-const MyFirstComponent = function() {
-  return ce(
-    'div',
-    { id: 'my-first-component' },
-    ce(MyTitle, { title: 'Game of Thrones', color: 'YellowGreen' }),
-    ce(MyTitle, { title: 'Stranger Things', color: 'GreenYellow' }),
-    ce(MyTitle, { title: 'Rick and Morty', color: 'LimeGreen' }),
-    ce(MyTitle, { title: 'Silicon Valley', color: 'peru' })
-  );
-};
+const App = () => (
+  <BrowserRouter>
+    <div className="app">
+      <Switch>
+        <Route exact path="/" component={Landing} />
+        <Route path="/search" component={Search} />
+        <Route component={FourOFour} />
+      </Switch>
+    </div>
+  </BrowserRouter>
+);
 
-ReactDOM.render(ce(MyFirstComponent), document.getElementById('app'));
+render(<App />, document.getElementById('app'));
