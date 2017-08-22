@@ -12,23 +12,23 @@ const FourOhFour = () => <h1>404</h1>;
 
 const App = () => (
   <BrowserRouter>
-    <div className="app">
-      <Switch>
-        <Route exact path="/" component={Landing} />
-        <Route path="/search" component={Search} />
-        <Route
-          path="/details/:id"
-          component={(props: { match: Match }) => {
-            const selectedShow = preload.shows.find(show => props.match.params.id === show.imdbID);
-            console.log('props in Details', props, 'selectedShow', selectedShow);
-            return (
-              <Details show={selectedShow} {...props}/>
-            )
-          }} />
-        <Route component={FourOhFour} />
-      </Switch>
-    </div>
+  <div className="app">
+  <Switch>
+  <Route exact path="/" component={Landing} />
+  <Route path="/search" component={(props) => (<Search shows={preload.shows} {...props} />)} />
+  <Route
+  path="/details/:id"
+  component={(props: { match: Match }) => {
+    const selectedShow = preload.shows.find(show => props.match.params.id === show.imdbID);
+    console.log('props in Details', props, 'selectedShow', selectedShow);
+    return (
+      <Details show={selectedShow} {...props}/>
+      )
+  }} />
+  <Route component={FourOhFour} />
+  </Switch>
+  </div>
   </BrowserRouter>
-);
+  );
 
 export default App;
