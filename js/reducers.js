@@ -1,5 +1,7 @@
+// @flow
+
 import { combineReducers } from 'redux';
-import { SET_SEARCH_TERM } from './actions';
+import { SET_SEARCH_TERM, ADD_API_DATA } from './actions';
 
 /*
 OLD WAY
@@ -31,9 +33,25 @@ const searchTerm = (state='', action: Action) => {
     return action.payload
   }
   return state;
-}
+};
+
+const apiData = (state={}, action: Action) => {
+  if (action.type === ADD_API_DATA) {
+    // At this point I know that the payload is a Show
+    /* The ES5 way
+    const key = action.payload.imdbID;
+    const obj = {};
+    obj[key] = action.payload;
+    */
+    return Object.assign({}, { [action.payload.imdbID]: action.payload }); // the square brackets says make these contents the key
+  }
+  return state;
+};
 
 // combineReducers does the object merging (for reducers) for you behind the scenes
-const rootReducer = combineReducers({ searchTerm });
+const rootReducer = combineReducers({
+  searchTerm,
+  apiData
+});
 
 export default rootReducer;

@@ -62,4 +62,6 @@ const mapStateToProps = state => ({
   searchTerm: state.searchTerm
 });
 
+
+export const Unwrapped = Search; // This is for Jest tests as we cannot export the Redux wrapped component to the test files
 export default connect(mapStateToProps)(Search);

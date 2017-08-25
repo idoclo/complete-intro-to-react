@@ -1,34 +1,42 @@
 // @flow
 
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from 'react-redux';
+import { getAPIDetails } from './actionCreators';
 import Header from './Header';
 import Spinner from './Spinner';
 
 class Details extends Component {
-  state = {
-    apiData: { imdbRating: '' }
-  };
+  // state = {
+  //   apiData: { imdbRating: '' }
+  // };
+
   componentDidMount() {
-    axios.get(`http://localhost:3000/${this.props.show.imdbID}`)
-      .then((response: { data: { rating: string }}) => {
-        this.setState({
-          apiData: response.data
-        });
-      })
-      .catch(error => {
-        throw new Error('Error in api GET');
-      });
-  }
+    // axios.get(`http://localhost:3000/${this.props.show.imdbID}`)
+    //   .then((response: { data: { rating: string }}) => {
+    //     this.setState({
+    //       apiData: response.data
+    //     });
+    //   })
+    //   .catch(error => {
+    //     console.error('Error in api GET', error);  // eslint-disable-line no-console
+    //   });
+    if (!this.props.rating) {
+      // need to request it
+      this.props.getAPIData()
+    }
+  };
   props: {
-    show: Show
+    show: Show,
+    rating: string,
+    getAPIData: Function
   };
   render() {
     // console.log('props in details', props);
     const { title, description, year, poster, trailer } = this.props.show;
     let ratingComponent;
-    if (this.state.apiData.rating) {
-      ratingComponent = <h3>{this.state.apiData.rating}</h3>;
+    if (this.props.rating) {
+      ratingComponent = <h3>{this.props.rating}</h3>;
     } else {
       ratingComponent = <Spinner />;
     }
@@ -57,4 +65,18 @@ class Details extends Component {
   }
 }
 
-export default Details;
+const mapStateToProps = (state, ownProps) => { // need ownProps to determine which api data we need to pull out of redux store
+  const apiData = state.apiData[ownProps.show.imdbID] ? state.apiData[ownProps.show.imdbID] : { apiData: ''};
+  return {
+    rating: apiData.rating
+  }
+};
+
+const mapDispatchToProps = (dispatch: Function, ownProps) => ({
+  // when you call this function it will say, "What show are you?". It then grabs that show, it takes the imdbID and throw it to thunk, which then takes care of all the data requesting behind the scenes.
+  getAPIData() {
+    dispatch(getAPIDetails(ownProps.show.imdbID));
+  }
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Details);
