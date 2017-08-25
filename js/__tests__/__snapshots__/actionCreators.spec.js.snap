@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`addAPIData returns the expected JSON object 1`] = `
+Object {
+  "payload": Object {
+    "description": "The personal and professional life of Dev, a 30-year-old actor in New York.",
+    "imdbID": "tt4635276",
+    "poster": "mon.jpg",
+    "rating": "1.5",
+    "title": "Master of None",
+    "trailer": "6bFvb3WKISk",
+    "year": "2015-",
+  },
+  "type": "ADD_API_DATA",
+}
+`;
+
+exports[`setSearchTerm returns an object with the expected action type and action payload 1`] = `
+Object {
+  "payload": "Atlanta",
+  "type": "SET_SEARCH_TERM",
+}
+`;

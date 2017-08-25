@@ -1,3 +1,5 @@
+// @flow
+
 import React from 'react';
 import { shallow, render } from 'enzyme';
 import { Provider } from 'react-redux'; // for the 3rd test so it can provide the store to it
