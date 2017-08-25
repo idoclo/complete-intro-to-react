@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`addAPIData returns the expected JSON object 1`] = `
+exports[`addAPIData 1`] = `
 Object {
   "payload": Object {
     "description": "The personal and professional life of Dev, a 30-year-old actor in New York.",
@@ -15,7 +15,7 @@ Object {
 }
 `;
 
-exports[`setSearchTerm returns an object with the expected action type and action payload 1`] = `
+exports[`setSearchTerm 1`] = `
 Object {
   "payload": "Atlanta",
   "type": "SET_SEARCH_TERM",
