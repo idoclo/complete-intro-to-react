@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { render } from 'react-dom';
+import { BrowserRouter } from 'react-router-dom';
 import Perf from 'react-addons-perf'; // a React performance recording tool
 import App from './App';
 
@@ -14,7 +15,13 @@ Perf.start();
 // Perf.printWasted();
 
 const renderApp = () => {
-  render(<App />, document.getElementById('app'));
+  // Now BrowserRouter is only going to render on the client. This frees up the node side to use a different kind of router
+  render(
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>,
+    document.getElementById('app')
+  );
 };
 renderApp();
 

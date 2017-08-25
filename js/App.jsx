@@ -1,7 +1,7 @@
 // @flow
 
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import type { Match } from 'react-router-dom';
 import { Provider } from 'react-redux'; // make redux available to react. Provider is a higher-order component which itself does not do anything but makes the store available to the app.
 import store from './store'; // need to provide the store to Provider
@@ -13,7 +13,6 @@ import preload from '../data.json';
 const FourOhFour = () => <h1>404</h1>;
 
 const App = () =>
-  <BrowserRouter>
     <Provider store={store}>
       <div className="app">
         <Switch>
@@ -31,6 +30,5 @@ const App = () =>
         </Switch>
       </div>
     </Provider>
-  </BrowserRouter>;
 
 export default App;
