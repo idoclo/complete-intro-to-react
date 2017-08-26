@@ -1,12 +1,15 @@
 {
+  // presets are just a group of plugins
 	"presets": [
 		"react",
+    // "es2015" this preset is obselete as many browsers recognise ES6 so no point compiling to ES5
+    // use env instead
 		["env", {
 			"targets": {
 				"browsers": "last 2 versions"
 			},
-			"loose": true,
-			"modules": false
+			"loose": true, // saying, "I'm not doing super crazy stuff with the edge cases. Go ahead and include the smaller bit of code rather than the huge bit."
+			"modules": false // telling babel to not transpile the modules as we are using webpack2 (ES6 enabled) which will worry about it.
 		}]
 	],
   "plugins": [

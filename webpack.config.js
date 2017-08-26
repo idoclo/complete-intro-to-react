@@ -19,10 +19,10 @@ module.exports = {
   devServer: {
     hot: true,
     publicPath: '/public/',
-    historyApiFallback: true
+    historyApiFallback: true // Telling dev server if it doesn't recognise something send it down to the client, and let the client worry about the routing. 404s will fall back to /index.html
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json'] // order of resolutions.
   },
   stats: {
     colors: true,
@@ -39,7 +39,7 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.jsx?$/,
+        test: /\.jsx?$/, // anything that ends in js or jsx run through babel
         loader: 'babel-loader'
       }
     ]
