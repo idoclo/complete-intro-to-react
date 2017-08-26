@@ -4,7 +4,7 @@
 		"react",
     // "es2015" this preset is obselete as many browsers recognise ES6 so no point compiling to ES5
     // use env instead
-		["env", {
+		["env", { // The babel preset env
 			"targets": {
 				"browsers": "last 2 versions"
 			},
@@ -16,13 +16,13 @@
     "react-hot-loader/babel", // this top level property is required for hot module reload. It will make the joints that the HMR knows where to cut off and reinsert itself in.
     "babel-plugin-transform-class-properties"
   ],
-  "env": {
-    "test": { //For tests to be able to use ES6
+  "env": { // doing different transformations based on environmental variables.
+    "test": { //For tests to be able to use ES6 | when node env = test then run this plugin
       "plugins": [
         "transform-es2015-modules-commonjs"
       ]
     },
-    "server": { //For node to understand how to do ES6 modules
+    "server": { //For Node to understand how to do ES6 modules
       "plugins": [
         "transform-es2015-modules-commonjs"
       ]
