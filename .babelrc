@@ -14,7 +14,12 @@
     "babel-plugin-transform-class-properties"
   ],
   "env": {
-    "test": {
+    "test": { //For tests to be able to use ES6
+      "plugins": [
+        "transform-es2015-modules-commonjs"
+      ]
+    },
+    "server": { //For node to understand how to do ES6 modules
       "plugins": [
         "transform-es2015-modules-commonjs"
       ]
