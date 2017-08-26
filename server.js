@@ -7,11 +7,11 @@ const ReactDOMServer = require('react-dom/server');
 const ReactRouter = require('react-router-dom');
 const _ = require('lodash');
 const fs = require('fs');
-const webpackDevMiddleware = require('webpack-dev-middleware'); // to fix hot module replacement
-const webpackHotMiddleware = require('webpack-hot-middleware'); // to fix hot module replacement
-const webpack = require('webpack'); // to fix hot module replacement
+const webpackDevMiddleware = require('webpack-dev-middleware'); // to fix hot module reload
+const webpackHotMiddleware = require('webpack-hot-middleware'); // to fix hot module reload
+const webpack = require('webpack'); // to fix hot module reload
 const App = require('./js/App').default; // .default because we export default; we export an {} with one key which is default
-const config = require('./webpack.config'); // to fix hot module replacement
+const config = require('./webpack.config'); // to fix hot module reload
 
 const StaticRouter = ReactRouter.StaticRouter; // StaticRouter in Node is what we will use to replace BrowserRouter
 const port = 8080;
@@ -27,7 +27,7 @@ server.use(
   })
 );
 server.use(webpackHotMiddleware(compiler));
-// At this point we have set up our server to do server-side rendering and hot module replacement
+// At this point we have set up our server to do server-side rendering and hot module reload
 
 server.use('/public', express.static('./public')); // statically serve everything in the public directory
 

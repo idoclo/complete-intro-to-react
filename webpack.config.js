@@ -4,10 +4,10 @@ const webpack = require('webpack');
 module.exports = {
   context: __dirname,
   entry: [
-    // 'react-hot-loader/patch',
-    // 'webpack-dev-server/client?http://localhost:8080',
-    // 'webpack/hot/only-dev-server',
-    'webpack-hot-middleware/client?path=__webpack_hmr&timeout=2000', // to fix hot module reload
+    // 'react-hot-loader/patch', // for hot module reload
+    // 'webpack-dev-server/client?http://localhost:8080', // for hot module reload
+    // 'webpack/hot/only-dev-server', // for hot module reload
+    'webpack-hot-middleware/client?path=__webpack_hmr&timeout=2000', // to fix hot module reload after introducing server-side rendering
     './js/ClientApp.jsx'
   ],
   devtool: 'cheap-eval-source-map',

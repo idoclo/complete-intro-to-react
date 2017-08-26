@@ -10,7 +10,7 @@
 		}]
 	],
   "plugins": [
-    "react-hot-loader/babel",
+    "react-hot-loader/babel", // this top level property is required for hot module reload
     "babel-plugin-transform-class-properties"
   ],
   "env": {
