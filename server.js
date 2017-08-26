@@ -7,6 +7,7 @@ const ReactDOMServer = require('react-dom/server');
 const ReactRouter = require('react-router-dom');
 const _ = require('lodash');
 const fs = require('fs');
+const compression = require('compression'); // building for production
 const webpackDevMiddleware = require('webpack-dev-middleware'); // to fix hot module reload
 const webpackHotMiddleware = require('webpack-hot-middleware'); // to fix hot module reload
 const webpack = require('webpack'); // to fix hot module reload
@@ -29,6 +30,7 @@ server.use(
 server.use(webpackHotMiddleware(compiler));
 // At this point we have set up our server to do server-side rendering and hot module reload
 
+server.use(compression()); // building for production
 server.use('/public', express.static('./public')); // statically serve everything in the public directory
 
 server.use((req, res) => {

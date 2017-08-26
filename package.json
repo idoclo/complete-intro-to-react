@@ -8,7 +8,8 @@
     "test": "jest",
     "test:coverage": "jest --coverage",
     "test:update": "jest -u",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch",
+    "start": "NODE_ENV=server nodemon server.js"
   },
   "jest": {
     "snapshotSerializers": ["jest-serializer-enzyme"]
