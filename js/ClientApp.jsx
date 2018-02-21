@@ -23,12 +23,13 @@ const renderApp = () => {
     document.getElementById('app')
   );
 };
-renderApp();
+renderApp(); // so it gets rendered the first time
 
 
-if (module.hot) {
-  module.hot.accept('./App', () => {
-    renderApp();
+// Only available in dev - not production.
+if (module.hot) { // I see that module.hot exists, to be sure that you are in development. module variable is from webpack library
+  module.hot.accept('./App', () => { // everytime that App has changed ...
+    renderApp(); // ... I need to call this function, ie rerender the whole App.
   });
 }
 
